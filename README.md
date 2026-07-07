@@ -729,8 +729,8 @@ app/
       ```
     - [v] GitHub에서 **Compare & pull request** 버튼 → PR 생성
     - [v] PR의 Checks / Actions 탭에서 CI 결과 확인 — 실행 순서: lint → (test · ai-review 병렬) → comment
-    - [] 초록불(✅) 확인 후 Merge
-- [] 로컬 사전 검사 ① — 명령어 직접 실행 (CI가 돌리는 것과 똑같은 검사를 손으로 실행)
+    - [v] 초록불(✅) 확인 후 Merge
+- [v] 로컬 사전 검사 ① — 명령어 직접 실행 (CI가 돌리는 것과 똑같은 검사를 손으로 실행)
     - [v] 일부러 문제 있는 `test.py` 를 만들기 (안 쓰는 import + 줄 끝 공백)
       ```python
       import os  # 안 쓰는 import (Ruff가 잡음)
@@ -750,13 +750,13 @@ app/
       ```bash
       uv run pytest tests/ -v            # CI의 test Job과 동일한 명령. push 전에 로컬에서 먼저 통과 확인
       ```
-        - [] health API 등록
-    - [] 확인 끝났으면 `test.py` 삭제
-- [] 로컬 사전 검사 ② — pre-commit 훅 (commit할 때 위 검사를 자동으로) — 아래 섹션 참고
-    - [] `uv run pre-commit install` — Git 훅 등록 (한 번만)
-    - [] 다시 문제 있는 `test.py` 를 만들고 `git add` → `git commit` → 훅이 자동으로 잡아서 수정하는지 확인
-    - [] 이미 push된 파일 전체 검사: `uv run pre-commit run --all-files`
-    - [] Unsafe 항목(F841·E402)은 직접 수정
+        - [v] health API 등록
+    - [v] 확인 끝났으면 `test.py` 삭제
+- [v] 로컬 사전 검사 ② — pre-commit 훅 (commit할 때 위 검사를 자동으로) — 아래 섹션 참고
+    - [v] `uv run pre-commit install` — Git 훅 등록 (한 번만)
+    - [v] 다시 문제 있는 `test.py` 를 만들고 `git add` → `git commit` → 훅이 자동으로 잡아서 수정하는지 확인
+    - [v] 이미 push된 파일 전체 검사: `uv run pre-commit run --all-files`
+    - [v] Unsafe 항목(F841·E402)은 직접 수정
 - [v] Test가 통과되어야 Merge 가능하도록 설정 (Ruleset)
     - [v] Settings → Rules → Rulesets → New ruleset → **New branch ruleset**
     - [v] Ruleset Name: `protect main branch` / Enforcement status: **Active**
